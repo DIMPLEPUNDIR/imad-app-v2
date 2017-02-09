@@ -22,8 +22,8 @@ var articles =  {
                 </p>`
      
  },
- 'article-Two': { 
-     title:"article Two | Dimple pundir",
+ 'article-two': { 
+     title:"article two | Dimple pundir",
   heading:"article Two",
   date:"feb 5,2017",
   content:`
@@ -38,7 +38,7 @@ var articles =  {
                 </p>`
      
  },
- 'article-Three': {
+ 'article-three': {
      title:"article Three | Dimple pundir",
   heading:"article Three",
   date:"feb 25,2017",
@@ -56,6 +56,7 @@ var articles =  {
     var date = data.date;
     var heading = data.heading;
     var content = data.content;
+    
     var htmlTemplate=`
 <html>
     <head>
@@ -93,7 +94,7 @@ app.get('/', function (req, res) {
 app.get('/:articleName',function (req,res) {
     //articlename == article-one
     //articles[articleName]=={} content object for article one
-    var articleName =req.params.articleName;
+    var articleName = req.params.articleName;
   res.send(createTemplate(articles[articleName])); 
 });
 
