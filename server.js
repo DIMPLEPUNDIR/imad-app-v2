@@ -5,7 +5,7 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articles= {
+var articles =  {
  'article-one' : {
      title:"article one | Dimple pundir",
   heading:"article one",
@@ -19,41 +19,14 @@ var articles= {
                 <p>
                  This is content of the first article two This is content of the first article .
                  This is content of the first article.
-                </p>
+                </p>`
      
- };
- 'article-Two'= { 
+ },
+ 'article-Two': { 
      title:"article Two | Dimple pundir",
   heading:"article Two",
   date:"feb 5,2017",
-  content:
-  <p>
-                    This is content of the first  article .This is content of the first article. 
-                    This is content of the first article.
-                    This is content of the first article .
-</p>
-                <p>
-                 This is content of the first article two This is content of the first article .
-                 This is content of the first article.
-                </p>
-     
- };
- 'article-Three'= {
-     title:"article Three | Dimple pundir",
-  heading:"article Three",
-  date:"feb 25,2017",
-  content:
-  <p>
-                    This is content of the 
-                    This is content of the first article .
-</p>
-     
- };
-};
-  title:"article one | Dimple pundir",
-  heading:"article one",
-  date:"feb 15,2017",
-  content:
+  content:`
   <p>
                     This is content of the first  article .This is content of the first article. 
                     This is content of the first article.
@@ -63,15 +36,28 @@ var articles= {
                  This is content of the first article two This is content of the first article .
                  This is content of the first article.
                 </p>`
-}};
-
+     
+ },
+ 'article-Three': {
+     title:"article Three | Dimple pundir",
+  heading:"article Three",
+  date:"feb 25,2017",
+  content:`
+  <p>
+                    This is content of the 
+                    This is content of the first article .
+</p>`
+     
+ },
+};
+  
  function createTemplate (data) {
     var title = data.title;
     var date = data.date;
     var heading = data.heading;
     var content = data.content;
-    var htmlTemplate=
-`<html>
+    var htmlTemplate=`
+<html>
     <head>
         <title>
             ${title} 
@@ -96,8 +82,8 @@ var articles= {
             </div>
    </div>
     </body>
-</html>`
-   ;
+</html>
+  ` ;
    return htmlTemplate;
 }
 app.get('/', function (req, res) {
@@ -106,7 +92,7 @@ app.get('/', function (req, res) {
 
 app.get('/:articleName',function (req,res) {
     //articlename == article-one
-    //articles[articleName]=={} content for article one
+    //articles[articleName]=={} content object for article one
     var articleName =req.params.articleName;
   res.send(createTemplate(articles[articleName])); 
 });
